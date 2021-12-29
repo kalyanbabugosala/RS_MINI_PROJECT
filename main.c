@@ -13,8 +13,8 @@ void MainMenu()
 	
 	
 	
-	printf("1.add \n2.view \n3.modify \n4.delete\n*.Exit");
-	scanf("%c",&choice);
+	printf("1.add \n2.view \n3.modify \n4.delete\n*.Exit\n");
+	scanf(" %c",&choice);
 	
 	
 	if(choice == '1')
@@ -24,6 +24,7 @@ void MainMenu()
 		if(b)
 		{
 			printf("\nSuccess...\n");
+			MainMenu();
 		}
 		else{
 		printf("\nFailure...\n");
@@ -31,41 +32,42 @@ void MainMenu()
 	}
 	else if(choice == '2')
 	{
-		printf("Selected opt2");
+		printf("\nSelected opt2\n");
 		int b = (fptr[1])();
 		if(b)
 		{
-			printf("Success...");
+			printf("\nSuccess...\n");
+			MainMenu();
 		}
 		else
 		{
-			printf("Failure...");
+			printf("\nFailure...\n");
 		}
 	}
 	else if(choice == '2')
 	{
-		printf("Selected opt3");
+		printf("\nSelected opt3\n");
 		int b =(fptr[1])();
 		if(b)
 		{
-			printf("Success...");
+			printf("\nSuccess...\n");
 		}
 		else
 		{
-			printf("Failure...");
+			printf("\nFailure...\n");
 		}
 	}
 	else if(choice == '4')
 	{
-		printf("Selected opt4");
+		printf("\nSelected opt4\n");
 		int b =(fptr[3])();
 		if(b)
 		{
-			printf("Success...");
+			printf("\nSuccess...\n");
 		}
 		else
 		{
-			printf("Failure...");
+			printf("\nFailure...\n");
 		}
 	}
 	else if(choice == '*')
