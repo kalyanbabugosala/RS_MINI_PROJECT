@@ -1,6 +1,11 @@
 #ifndef headers
 #define headers
 #define max_size 1000
+#include<string.h>
+#pragma pack(1)
+#include<stdlib.h>
+
+#if 0
 // Inner structure for Reportee information.
 /*struct Reportee
 {
@@ -8,25 +13,22 @@
 	char *reporteeName;
 };*/
 
-
+#endif
 // Structure for Employee details.
 typedef struct Employee
 {
 	const char empId[max_size];
-	char doj[max_size];
-	char phoneNo[max_size];
-	char status[max_size];
-	char projectInfo[max_size];
-	char band[max_size];
-	char techArea[max_size];
 	char name[max_size];
 	const char emailId[max_size];
+	char band[max_size];
+	const char doj[max_size];
+	char phoneNo[max_size];
 	char reportingManager[max_size];
+	char techArea[max_size];
+	char projectInfo[max_size];
+	char status[max_size];
 	//struct Reportee reportee;
-	//char reporteeNameId[max_size]="";
-
-	
-	
+	//char reporteeNameId[max_size];
 	
 }EMP;
 

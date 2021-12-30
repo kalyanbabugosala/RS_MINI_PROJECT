@@ -1,4 +1,5 @@
 #include<stdio.h>
+//#include<string.h>
 #include "header.h"
 
 int add()
@@ -18,10 +19,10 @@ int add()
 	}
 	else
 	{
-		return 0;
+		return 1;
 	}
 	
-	//return 1;
+	return 0;
 }
 
 int add_details()
@@ -40,7 +41,7 @@ typedef struct Employee
 	const char emailId[max_size];
 	char reportingManager[max_size];
 	//struct Reportee reportee;
-	char reporteeNameId[max_size];
+	//char reporteeNameId[max_size]="";
 	
 }EMP;
 
@@ -73,9 +74,10 @@ typedef struct Employee
 	
 	printf("\nEnter the Reporting manager\n");
 	scanf("%s",&e.reportingManager);
+
 	
-	printf("\nEnter the Reportee name and Id \n");
-	scanf("%s",&e.reporteeNameId);
+	
+	//scanf("%s",&e.reporteeNameId);
 	
 	printf("\nEnter the Tech.Area \n");
 	scanf("%s",&e.techArea);
@@ -85,12 +87,37 @@ typedef struct Employee
 	
 	printf("\nEnter the status\n");
 	scanf("%s",&e.status);
+
+	char repo;
+	char reporteeNameId[max_size]="";
+	char new_reportee[max_size];
+	printf("\nYou have any reportees working under you (Y/N)\n");
+	scanf(" %c",&repo);
 	
+	if(repo == 'Y')
+	{
+		int total_repo;
+		printf("\nEnter total no of reportees.\n");
+		scanf("%d",&total_repo);
+		
+		for(int i=0;i<total_repo;i++)
+		{
+			
+			printf("\nEnter the Reportee name and Id \n");
+			scanf("%s",&new_reportee);
+			strcat(new_reportee,"-");
+			strcat(reporteeNameId,new_reportee);
+		}
+	}	
+	else 
+	{
+		strcat(reporteeNameId,"NA");
+	}
 	
 	fp = fopen("TSIndia_Emp_DB1.xlsx","a");
 	//printf("File is opened for adding info...");
-	fprintf(fp,"%s\t %s\t %s\t %s\t %s\t %s\t %s\t %s\t %s\t %s\t \n",e.empId,e.name,e.emailId,e.band,e.doj,e.phoneNo,e.reportingManager,e.reporteeNameId,e.techArea,e.projectInfo,e.status);
+	fprintf(fp,"%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t\n",e.empId,e.name,e.emailId,e.band,e.doj,e.phoneNo,e.reportingManager,reporteeNameId,e.techArea,e.projectInfo,e.status);
 	
 	fclose(fp);
-	return 1;	
+	return 0;	
 }

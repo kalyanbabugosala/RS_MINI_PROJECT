@@ -1,6 +1,7 @@
 #include "header.h"
 #include<stdio.h>
-#include<stdlib.h>
+//#include<stdlib.h>
+
 //#include<stdbool.h>
 
 
@@ -21,20 +22,21 @@ void MainMenu()
 	{
 		printf("\nSelected opt1\n");
 		int b = (fptr[0])();
-		if(b)
+		if(!b)
 		{
 			printf("\nSuccess...\n");
 			MainMenu();
 		}
 		else{
-		printf("\nFailure...\n");
+			printf("\nFailure...\n");
+			MainMenu();
 		}
 	}
 	else if(choice == '2')
 	{
 		printf("\nSelected opt2\n");
 		int b = (fptr[1])();
-		if(b)
+		if(!b)
 		{
 			printf("\nSuccess...\n");
 			MainMenu();
@@ -42,32 +44,37 @@ void MainMenu()
 		else
 		{
 			printf("\nFailure...\n");
+			MainMenu();
 		}
 	}
-	else if(choice == '2')
+	else if(choice == '3')
 	{
 		printf("\nSelected opt3\n");
-		int b =(fptr[1])();
-		if(b)
+		int b =(fptr[2])();
+		if(!b)
 		{
 			printf("\nSuccess...\n");
+			MainMenu();
 		}
 		else
 		{
 			printf("\nFailure...\n");
+			MainMenu();
 		}
 	}
 	else if(choice == '4')
 	{
 		printf("\nSelected opt4\n");
 		int b =(fptr[3])();
-		if(b)
+		if(!b)
 		{
 			printf("\nSuccess...\n");
+			MainMenu();
 		}
 		else
 		{
 			printf("\nFailure...\n");
+			MainMenu();
 		}
 	}
 	else if(choice == '*')
