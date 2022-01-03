@@ -4,6 +4,7 @@
 #include<string.h>
 #pragma pack(1)
 #include<stdlib.h>
+#include<time.h>
 
 #if 0
 // Inner structure for Reportee information.
@@ -23,10 +24,12 @@ typedef struct Employee
 	char band[max_size];
 	const char doj[max_size];
 	char phoneNo[max_size];
+	char created_date[max_size];
 	char reportingManager[max_size];
 	char techArea[max_size];
 	char projectInfo[max_size];
 	char status[max_size];
+	char releaving_date[max_size];
 	//struct Reportee reportee;
 	//char reporteeNameId[max_size];
 	
