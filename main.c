@@ -1,9 +1,4 @@
 #include "header.h"
-#include<stdio.h>
-//#include<stdlib.h>
-
-//#include<stdbool.h>
-
 
 void MainMenu()
 {
@@ -91,8 +86,12 @@ void MainMenu()
 
 int main()
 {	
+	
+	read_DB();
 	MainMenu();	
-	return 0;
+
+	
+		return 0;
 }
 
 

@@ -1,6 +1,5 @@
 #include "header.h"
-//#include<string.h>
-#include<stdio.h>
+
 
 int view()
 {
@@ -29,9 +28,9 @@ int view()
 
 int view_details()
 {
-	EMP e;
+	EMP new_node[2];
 	const char id[max_size];
-	char reporteeNameId[max_size];
+	//char reporteeNameId[max_size];
 	printf("\nEnter the Emp Id for displaying the details...\n");  
 	scanf(" %s",&id);
 	//printf("%s %d\n",id,strlen(id));
@@ -39,30 +38,42 @@ int view_details()
 	//printf("Entered id is: %s \n",id);
 	FILE *fp;
 	
-	/*
-	
-	typedef struct Employee
-	{
-		const char empId[max_size];
-		char name[max_size];
-		const char emailId[max_size];
-		char band[max_size];
-		const char doj[max_size];
-	 	char phoneNo[max_size];
-		char created_date[max_size];
-		char reportingManager[max_size];
-		char techArea[max_size];
-		char projectInfo[max_size];
-		char status[max_size];
-		char releaving_date[max_size];
-		//struct Reportee reportee;
-		//char reporteeNameId[max_size];
-	
-	}EMP;
-	
-	*/
 	
 	fp = fopen("TSIndia_Emp_DB1.xlsx","r");
+	
+	
+	
+	//if 0
+	fread(&new_node[2], sizeof(new_node[2]), 1, fp);
+	for (int i=0;i<2;i++){
+	
+		//printf("%s  %d\n",id,strlen(id));
+		printf("\n%s",new_node[i].empId);
+		
+		//if(strcmp(new_node[i].empId,id) == 0 )
+		//{
+		
+		printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s",
+		new_node[i].empId,
+		new_node[i].name,
+		new_node[i].emailId,
+		new_node[i].band,
+		new_node[i].doj,
+		new_node[i].phoneNo,
+		new_node[i].created_date,
+		new_node[i].reportingManager,
+		new_node[i].reporteeNameId,
+		new_node[i].techArea,
+		new_node[i].projectInfo,
+		new_node[i].status,
+		new_node[i].releaving_date
+		);
+		//}
+      		printf("\n");
+	
+	}
+	//#endif
+	#if 0
 	while(fscanf(fp,"%s\t%s\t%s\t%s\t%s\t%s\t%[^\n]s\t%s\t%s\t%s\t%s\t%s\t%s\n",
 			    e.empId,e.name,e.emailId,e.band,
 			    e.doj,e.phoneNo,e.created_date,e.reportingManager,reporteeNameId,
@@ -92,6 +103,7 @@ int view_details()
 			
 		}
 	}
+	#endif
 	fclose(fp);
 	return 0;
 }

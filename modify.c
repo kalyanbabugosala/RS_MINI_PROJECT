@@ -1,6 +1,5 @@
-#include<stdio.h>
 #include "header.h"
-//#include<string.h>
+
 int modify()
 {
 	printf("This is modify function");
@@ -43,7 +42,7 @@ void modify_details()
 {
 	EMP e;
 	const char id[max_size];
-	char reporteeNameId[max_size];
+	//char reporteeNameId[max_size];
 	printf("\nEnter the Emp Id for modifying the details...\n");  
 	scanf("%s",&id);
 	
@@ -73,7 +72,7 @@ void modify_details()
 	
 	read = fopen("TSIndia_Emp_DB1.xlsx","r+");
 	//write = fopen("TSIndia_Emp_DB1.xlsx","a+");
-	while(fscanf(read,"%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",&e.empId,&e.name,&e.emailId,&e.band,&e.doj,&e.phoneNo,&e.reportingManager,&reporteeNameId,&e.techArea,&e.projectInfo,&e.status) != EOF)
+	while(fscanf(read,"%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",e.empId,e.name,e.emailId,e.band,e.doj,e.phoneNo,e.reportingManager,e.reporteeNameId,e.techArea,e.projectInfo,e.status) != EOF)
 	{
 		//printf("In while");
 		printf("%s",e.empId);
@@ -89,43 +88,43 @@ void modify_details()
 			{
 				case '1':
 					printf("Please enter the employee name");
-					scanf("%s",&e.name);
+					scanf("%s",e.name);
 					details_choice();
 					break;
 				case '2':
 					printf("Please enter the employee band");
-					scanf("%s",&e.band);
+					scanf("%s",e.band);
 					details_choice();
 					break;
 				case '3':
 					printf("Please enter the employee phone number");
-					scanf("%s",&e.phoneNo);
+					scanf("%s",e.phoneNo);
 					details_choice();
 					break;
 				case '4':
 					printf("Please enter the Reporting Manager");
-					scanf("%s",&e.reportingManager);
+					scanf("%s",e.reportingManager);
 					details_choice();
 					break;
 				case '5':
 					printf("Please enter the Reportees");
-					printf("previous reportees are: %s",reporteeNameId);
-					scanf("%s",&reporteeNameId);
+					printf("previous reportees are: %s",e.reporteeNameId);
+					scanf("%s",e.reporteeNameId);
 					details_choice();
 					break;
 				case '6':
 					printf("Please enter the tech Area");
-					scanf("%s",&e.techArea);
+					scanf("%s",e.techArea);
 					details_choice();
 					break;
 				case '7':
 					printf("Please enter the project Info");
-					scanf("%s",&e.projectInfo);
+					scanf("%s",e.projectInfo);
 					details_choice();
 					break;
 				case '8':
 					printf("Please enter the status");
-					scanf("%s",&e.status);
+					scanf("%s",e.status);
 					details_choice();
 					break;
 				default:
@@ -133,7 +132,7 @@ void modify_details()
 					
 			}
 			
-		fprintf(read,"%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",e.empId,e.name,e.emailId,e.band,e.doj,e.phoneNo,e.reportingManager,reporteeNameId,e.techArea,e.projectInfo,e.status);
+		fprintf(read,"%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",e.empId,e.name,e.emailId,e.band,e.doj,e.phoneNo,e.reportingManager,e.reporteeNameId,e.techArea,e.projectInfo,e.status);
 		}
 	}
 	

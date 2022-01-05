@@ -1,8 +1,4 @@
-#include<stdio.h>
-//#include<string.h>
 #include "header.h"
-#include<time.h>
-
 
 int add()
 {
@@ -76,57 +72,71 @@ typedef struct Employee
 //EMP *head;
 
 */
-	EMP e;
+	EMP *e;
 	
 	FILE *fp;
+	e = malloc(sizeof(struct Employee));
+	
 	
 	printf("\nEnter the Emp Id\n");
-	scanf("%s",&e.empId);
+	scanf("%s",e->empId);
 	//printf("Entered EmpId is %s",e.empId);
+	strcat(e->empId,"\t");
 	
 	printf("\nEnter the Emp name\n");
 	getchar();
-	scanf("%[^\n]s",&e.name);
+	scanf("%[^\n]s",e->name);
+	strcat(e->name,"\t");
 	
 	printf("\nEnter the Email Id\n");
-	scanf("%s",&e.emailId);
+	scanf("%s",e->emailId);
+	strcat(e->emailId,"\t");
+	
 	
 	printf("\nEnter the band\n");
-	scanf("%s",&e.band);
+	scanf("%s",e->band);
+	strcat(e->band,"\t");
 	
 	printf("\nEnter the Emp DOJ\n");
-	scanf("%s",&e.doj);
+	scanf("%s",e->doj);
+	strcat(e->doj,"\t");
 	
 	printf("\nEnter the Emp Phone number\n");
-	scanf("%s",&e.phoneNo);
+	scanf("%s",e->phoneNo);
+	strcat(e->phoneNo,"\t");
 	
 		
 	printf("\nEnter the Reporting manager\n");
 	getchar();
-	scanf("%[^\n]s",&e.reportingManager);
+	scanf("%[^\n]s",e->reportingManager);
+	strcat(e->reportingManager,"\t");
 
 	
 	
 	//scanf("%s",&e.reporteeNameId);
 	
 	printf("\nEnter the Tech.Area \n");
-	scanf("%s",&e.techArea);
+	scanf("%s",e->techArea);
+	strcat(e->techArea,"\t");
 	
 	printf("\nEnter the Project Info\n");
 	getchar();
-	scanf("%[^\n]s",&e.projectInfo);
+	scanf("%[^\n]s",e->projectInfo);
+	strcat(e->projectInfo,"\t");
 	
 	//printf("\nEnter the status\n");
 	//scanf("%s",&e.status);
 	
 	//strcpy(&e.created_date,timestamp());
-	strcpy(&e.status,"Active");
-	strcpy(&e.releaving_date,"_");
-
+	strcpy(e->status,"Active");
+	strcat(e->status,"\t");
+	
+	strcpy(e->releaving_date,"_");
+	strcat(e->releaving_date,"\t\n");
 	
 	char repo;
-	char reporteeNameId[max_size]="";
-	char new_reportee[max_size];
+	//char reporteeNameId[max_size]="";
+	
 	printf("\nYou have any reportees working under you (Y/N)\n");
 	scanf(" %c",&repo);
 	
@@ -138,27 +148,49 @@ typedef struct Employee
 		
 		for(int i=0;i<total_repo;i++)
 		{
-			
+			char new_reportee[max_size];
 			printf("\nEnter the Reportee name and Id \n");
 			getchar();
-			scanf("%[^\n]s",&new_reportee);
+			scanf("%[^\n]s",new_reportee);
 			strcat(new_reportee,"-");
-			strcat(reporteeNameId,new_reportee);
+			strcat(e->reporteeNameId,new_reportee);
 		}
-		reporteeNameId[strlen(total_repo)-1] = '\0';
+		e->reporteeNameId[strlen(total_repo)-1] = '\0';
 	}	
 	else 
 	{
-		strcat(reporteeNameId,"NA");
+		strcpy(e->reporteeNameId,"NA");
 	}
+	strcat(e->reporteeNameId,"\t");
 	
 	
-	fp = fopen("TSIndia_Emp_DB1.xlsx","a");
+	//File opened for the write.
+	fp = fopen("TSIndia_Emp_DB1.xlsx","ab");
 	printf("File is opened for adding info...");
 	
-	strcpy(&e.created_date,timestamp());
-	printf("After time created.");	fprintf(fp,"%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",e.empId,e.name,e.emailId,e.band,e.doj,e.phoneNo,e.created_date,e.reportingManager,reporteeNameId,e.techArea,e.projectInfo,e.status,e.releaving_date);
+	strcpy(e->created_date,timestamp());
+	printf("After time created.");	
 	
+	fwrite(e,sizeof(EMP),1,fp);
+	
+	#if 0
+	fprintf(fp,
+		   "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",
+		   e->empId,
+		   e->name,
+		   e->emailId,
+		   e->band,
+		   e->doj,
+		   e->phoneNo,
+		   e->created_date,
+		   e->reportingManager,
+	 	   e->reporteeNameId,
+		   e->techArea,
+		   e->projectInfo,
+		   e->status,
+	      	   e->releaving_date);
+	#endif
 	fclose(fp);
+	free(e);
 	return 0;	
 }
